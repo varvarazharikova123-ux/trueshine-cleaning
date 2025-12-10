@@ -768,6 +768,8 @@
         .quick-questions {
             margin-top: 20px;
             flex-grow: 1;
+            overflow-y: auto;
+            max-height: 300px;
         }
         
         .quick-question {
@@ -830,6 +832,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            max-height: 400px;
         }
         
         .message {
@@ -1149,24 +1152,6 @@
                 text-align: center;
             }
             
-            .chat-container {
-                flex-direction: column;
-                height: 700px;
-            }
-            
-            .chat-sidebar {
-                width: 100%;
-                padding: 20px;
-            }
-            
-            .chat-messages {
-                height: 400px;
-            }
-            
-            .message {
-                max-width: 85%;
-            }
-            
             .subscription-card.popular {
                 transform: scale(1);
             }
@@ -1204,6 +1189,71 @@
             .price-table td {
                 padding: 8px;
                 font-size: 0.9rem;
+            }
+            
+            /* ИСПРАВЛЕНИЕ ДЛЯ ЧАТ-БОТА НА МОБИЛЬНЫХ */
+            .chat-container {
+                flex-direction: column;
+                height: auto;
+                min-height: 500px;
+                max-height: 70vh;
+                overflow: hidden;
+                display: flex;
+            }
+            
+            .chat-sidebar {
+                width: 100%;
+                padding: 15px;
+                max-height: 180px;
+                overflow-y: auto;
+                border-bottom: 1px solid #333;
+            }
+            
+            .chat-messages {
+                height: 250px !important;
+                min-height: 250px;
+                max-height: 250px;
+                padding: 15px;
+                flex-grow: 1;
+            }
+            
+            .chat-input-container {
+                padding: 15px;
+                position: sticky;
+                bottom: 0;
+                background-color: #1a1a1a;
+                z-index: 10;
+            }
+            
+            .message {
+                max-width: 85%;
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+            
+            .suggested-questions {
+                padding: 10px 15px;
+                justify-content: center;
+                gap: 8px;
+            }
+            
+            .suggested-question {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+            
+            .quick-questions {
+                max-height: 120px;
+            }
+            
+            .quick-question {
+                padding: 10px;
+                font-size: 0.9rem;
+                margin-bottom: 8px;
+            }
+            
+            .chat-bot {
+                padding: 40px 0;
             }
         }
     </style>
@@ -1515,7 +1565,6 @@
         </div>
     </section>
     
-    
     <!-- Subscriptions Section -->
     <section class="subscriptions" id="subscriptions">
         <div class="container">
@@ -1740,14 +1789,14 @@
                     <h3>TrueShine</h3>
                     <p>Профессиональный клининг для вашего дома и офиса. Доверьте уборку профессионалам и наслаждайтесь свободным временем!</p>
                     <div class="social-links">
-                        <a href="#">IG</a>
+                        <a href="#" aria-label="Instagram">IG</a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h3>Контакты</h3>
-                    <p>+ 375 (25) 908-51-27 </p>
-                    <p>+ 375 (33) 684-88-44 </p>
-                    <p>г. Минск </p>
+                    <p>+ 375 (25) 908-51-27</p>
+                    <p>+ 375 (33) 684-88-44</p>
+                    <p>г. Минск</p>
                 </div>
             </div>
             <div class="copyright">
@@ -1865,7 +1914,7 @@
             "генеральная уборка": ["генеральная уборка", "полная уборка", "тщательная уборка", "глубокая уборка", "капитальная уборка"],
             "подписка": ["подписка", "абонемент", "тариф", "пакет", "программа", "регулярная уборка", "подписки", "абонементы", "подписка на уборку"],
             "тариф": ["тариф", "пакет", "план", "вариант", "подписка", "комплекс", "тарифный план"],
-            "сколько стоит": ["сколько стоит", "цена", "стоимость", "ценник", "сколько", "какая цена", "сколько денег"],
+            "сколько стоит": ["сколько стоит", "цена", "стоимость", "ценник", "сколько", "какая цена", "сколько денег", "стоит"],
             "как заказать": ["как заказать", "заказать", "оформить заказ", "сделать заказ", "записаться", "забронировать"]
         };
 
