@@ -732,7 +732,7 @@
             color: #ccc;
         }
         
-        /* Чат-бот Section */
+        /* Чат-бот Section (ПК версия) */
         .chat-bot {
             padding: 80px 0;
             background-color: #111111;
@@ -931,6 +931,11 @@
         .suggested-question:hover {
             background-color: #333;
             color: white;
+        }
+        
+        /* Мобильная версия чата (скрыта на ПК) */
+        .mobile-chat {
+            display: none;
         }
         
         /* CTA Section */
@@ -1191,65 +1196,163 @@
                 font-size: 0.9rem;
             }
             
-            /* ИСПРАВЛЕНИЕ ДЛЯ ЧАТ-БОТА НА МОБИЛЬНЫХ */
+            /* На мобильных скрываем ПК версию чата */
             .chat-container {
-                flex-direction: column;
-                height: auto;
-                min-height: 500px;
-                max-height: 70vh;
-                overflow: hidden;
-                display: flex;
+                display: none !important;
             }
             
-            .chat-sidebar {
-                width: 100%;
-                padding: 15px;
-                max-height: 180px;
-                overflow-y: auto;
+            /* Показываем мобильную версию */
+            .mobile-chat {
+                display: block;
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+            
+            .mobile-chat-container {
+                background-color: #1a1a1a;
+                border-radius: 15px;
+                padding: 20px;
+                box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+                border: 1px solid #333;
+            }
+            
+            .mobile-chat-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+                padding-bottom: 15px;
                 border-bottom: 1px solid #333;
             }
             
-            .chat-messages {
-                height: 250px !important;
-                min-height: 250px;
-                max-height: 250px;
-                padding: 15px;
-                flex-grow: 1;
-            }
-            
-            .chat-input-container {
-                padding: 15px;
-                position: sticky;
-                bottom: 0;
-                background-color: #1a1a1a;
-                z-index: 10;
-            }
-            
-            .message {
-                max-width: 85%;
-                padding: 12px;
-                font-size: 0.9rem;
-            }
-            
-            .suggested-questions {
-                padding: 10px 15px;
+            .mobile-chat-avatar {
+                width: 50px;
+                height: 50px;
+                background-color: #333;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
                 justify-content: center;
-                gap: 8px;
+                font-size: 1.5rem;
+                color: white;
+                margin-right: 15px;
             }
             
-            .suggested-question {
-                font-size: 0.8rem;
-                padding: 6px 12px;
+            .mobile-chat-info h3 {
+                color: #ffffff;
+                margin-bottom: 5px;
+                font-size: 1.3rem;
             }
             
-            .quick-questions {
-                max-height: 120px;
-            }
-            
-            .quick-question {
-                padding: 10px;
+            .mobile-chat-info p {
+                color: #888;
                 font-size: 0.9rem;
-                margin-bottom: 8px;
+            }
+            
+            .mobile-chat-messages {
+                max-height: 250px;
+                min-height: 250px;
+                overflow-y: auto;
+                margin-bottom: 20px;
+                padding: 15px;
+                background-color: #111;
+                border-radius: 10px;
+                border: 1px solid #333;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-message {
+                padding: 12px 15px;
+                border-radius: 15px;
+                line-height: 1.5;
+                max-width: 85%;
+                position: relative;
+            }
+            
+            .mobile-message.bot {
+                background-color: #222;
+                border: 1px solid #333;
+                color: #ccc;
+                align-self: flex-start;
+                border-bottom-left-radius: 5px;
+            }
+            
+            .mobile-message.user {
+                background-color: #333;
+                color: white;
+                align-self: flex-end;
+                border-bottom-right-radius: 5px;
+            }
+            
+            .mobile-message-time {
+                font-size: 0.7rem;
+                opacity: 0.7;
+                margin-top: 5px;
+                text-align: right;
+                color: #888;
+            }
+            
+            .mobile-quick-questions {
+                margin-bottom: 25px;
+            }
+            
+            .mobile-quick-question {
+                background-color: #333;
+                padding: 15px;
+                border-radius: 10px;
+                margin-bottom: 12px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                color: #ccc;
+                border: 1px solid #444;
+                font-size: 1rem;
+                text-align: center;
+            }
+            
+            .mobile-quick-question:active {
+                background-color: #444;
+                transform: scale(0.98);
+            }
+            
+            .mobile-chat-input-container {
+                display: flex;
+                gap: 10px;
+                margin-top: 20px;
+            }
+            
+            .mobile-chat-input {
+                flex-grow: 1;
+                padding: 12px 15px;
+                border: 1px solid #444;
+                border-radius: 25px;
+                font-size: 1rem;
+                background-color: #222;
+                color: #ccc;
+            }
+            
+            .mobile-chat-input:focus {
+                outline: none;
+                border-color: #555;
+            }
+            
+            .mobile-chat-send-btn {
+                background-color: #333;
+                color: white;
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .mobile-chat-send-btn:active {
+                background-color: #444;
+                transform: scale(0.95);
             }
             
             .chat-bot {
@@ -1713,6 +1816,8 @@
                 <h2>Помощник по уборке</h2>
                 <p>Задайте вопрос нашему виртуальному помощнику и получите мгновенный ответ</p>
             </div>
+            
+            <!-- Полная версия для ПК -->
             <div class="chat-container">
                 <div class="chat-sidebar">
                     <h3>Быстрые вопросы</h3>
@@ -1767,6 +1872,49 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Мобильная версия (скрыта на ПК) -->
+            <div class="mobile-chat">
+                <div class="mobile-chat-container">
+                    <div class="mobile-chat-header">
+                        <div class="mobile-chat-avatar">🤖</div>
+                        <div class="mobile-chat-info">
+                            <h3>Помощник TrueShine</h3>
+                            <p>Отвечу на ваши вопросы 24/7</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-chat-messages" id="mobileChatMessages">
+                        <!-- Сообщения для мобильной версии -->
+                    </div>
+                    
+                    <div class="mobile-quick-questions">
+                        <div class="mobile-quick-question" data-question="Какая уборка подойдет для квартиры 50 м²?">
+                            Какая уборка для квартиры 50 м²?
+                        </div>
+                        <div class="mobile-quick-question" data-question="Сколько стоит генеральная уборка?">
+                            Сколько стоит генеральная уборка?
+                        </div>
+                        <div class="mobile-quick-question" data-question="Какие средства вы используете?">
+                            Какие средства используете?
+                        </div>
+                        <div class="mobile-quick-question" data-question="Как быстро можно заказать уборку?">
+                            Как быстро заказать уборку?
+                        </div>
+                        <div class="mobile-quick-question" data-question="Что входит в экспресс-уборку?">
+                            Что входит в экспресс-уборку?
+                        </div>
+                        <div class="mobile-quick-question" data-question="Есть ли скидка на первый заказ?">
+                            Есть ли скидка на первый заказ?
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-chat-input-container">
+                        <input type="text" class="mobile-chat-input" id="mobileChatInput" placeholder="Введите ваш вопрос...">
+                        <button class="mobile-chat-send-btn" id="mobileChatSendBtn">➤</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     
@@ -1806,7 +1954,7 @@
     </footer>
     
     <script>
-        // База знаний для чат-бота (обновленная с подписками)
+        // База знаний для чат-бота (общая для обеих версий)
         const knowledgeBase = {
             // Общие вопросы
             "привет": {
@@ -1907,7 +2055,7 @@
             }
         };
 
-        // Синонимы для лучшего распознавания (обновленные)
+        // Синонимы для лучшего распознавания
         const synonyms = {
             "привет": ["привет", "здравствуйте", "добрый день", "добрый вечер", "здрасьте", "хай", "hello", "hi"],
             "экспресс уборка": ["экспресс уборка", "быстрая уборка", "повседневная уборка", "регулярная уборка", "ежедневная уборка"],
@@ -1918,60 +2066,20 @@
             "как заказать": ["как заказать", "заказать", "оформить заказ", "сделать заказ", "записаться", "забронировать"]
         };
 
-        // Основной код чат-бота
+        // Основной код
         document.addEventListener('DOMContentLoaded', function() {
-            const chatMessages = document.getElementById('chatMessages');
-            const chatInput = document.getElementById('chatInput');
-            const chatSendBtn = document.getElementById('chatSendBtn');
-            const quickQuestions = document.querySelectorAll('.quick-question');
-            const suggestedQuestions = document.querySelectorAll('.suggested-question');
+            // ПРОВЕРЯЕМ, МОБИЛЬНОЕ ЛИ УСТРОЙСТВО
+            const isMobile = window.innerWidth <= 768;
             
-            // Приветственное сообщение
-            setTimeout(() => {
-                addBotMessage("Здравствуйте! Я помощник компании 'TrueShine'. Задайте мне любой вопрос об уборке, ценах, подписках или наших услугах!");
-            }, 1000);
-            
-            // Функция добавления сообщения от бота
-            function addBotMessage(text) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'message bot';
-                messageDiv.innerHTML = `
-                    ${text}
-                    <div class="message-time">${getCurrentTime()}</div>
-                `;
-                chatMessages.appendChild(messageDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-                
-                // Анимация появления
-                setTimeout(() => {
-                    messageDiv.style.animation = 'fadeIn 0.3s ease';
-                }, 10);
+            if (isMobile) {
+                // ЗАПУСКАЕМ МОБИЛЬНУЮ ВЕРСИЮ
+                initMobileChat();
+            } else {
+                // ЗАПУСКАЕМ ПК ВЕРСИЮ
+                initDesktopChat();
             }
             
-            // Функция добавления сообщения от пользователя
-            function addUserMessage(text) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'message user';
-                messageDiv.innerHTML = `
-                    ${text}
-                    <div class="message-time">${getCurrentTime()}</div>
-                `;
-                chatMessages.appendChild(messageDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-                
-                // Анимация появления
-                setTimeout(() => {
-                    messageDiv.style.animation = 'fadeIn 0.3s ease';
-                }, 10);
-            }
-            
-            // Функция получения текущего времени
-            function getCurrentTime() {
-                const now = new Date();
-                return `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
-            }
-            
-            // Функция поиска ответа в базе знаний
+            // Общая функция поиска ответа
             function findAnswer(question) {
                 const lowerQuestion = question.toLowerCase();
                 
@@ -2017,145 +2125,314 @@
                 return knowledgeBase["default"];
             }
             
-            function processQuestion(question) {
-                if (!question.trim()) return;
-                
-                // Добавляем сообщение пользователя
-                addUserMessage(question);
-                
-                // Ищем ответ
-                const answerData = findAnswer(question);
-                
-                // Задержка для имитации "печатания"
-                setTimeout(() => {
-                    addBotMessage(answerData.answer);
-                    
-                    // Если есть предложения следующих вопросов, добавляем их
-                    if (answerData.suggestions && answerData.suggestions.length > 0) {
-                        setTimeout(() => {
-                            const suggestionsDiv = document.createElement('div');
-                            suggestionsDiv.className = 'suggested-questions';
-                            suggestionsDiv.style.marginTop = '10px';
-                            
-                            answerData.suggestions.forEach(suggestion => {
-                                const suggestionBtn = document.createElement('div');
-                                suggestionBtn.className = 'suggested-question';
-                                suggestionBtn.textContent = suggestion;
-                                suggestionBtn.style.margin = '5px';
-                                suggestionBtn.onclick = () => {
-                                    processQuestion(suggestion);
-                                };
-                                suggestionsDiv.appendChild(suggestionBtn);
-                            });
-                            
-                            chatMessages.appendChild(suggestionsDiv);
-                            chatMessages.scrollTop = chatMessages.scrollHeight;
-                        }, 300);
-                    }
-                }, 500);
-                
-                // Очищаем поле ввода
-                chatInput.value = '';
+            // Функция получения текущего времени
+            function getCurrentTime() {
+                const now = new Date();
+                return `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
             }
             
-            // Обработчик кнопки отправки
-            chatSendBtn.addEventListener('click', () => {
-                processQuestion(chatInput.value);
-            });
-            
-            // Обработчик нажатия Enter
-            chatInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    processQuestion(chatInput.value);
+            // ========== МОБИЛЬНАЯ ВЕРСИЯ ==========
+            function initMobileChat() {
+                const mobileChatMessages = document.getElementById('mobileChatMessages');
+                const mobileChatInput = document.getElementById('mobileChatInput');
+                const mobileChatSendBtn = document.getElementById('mobileChatSendBtn');
+                const mobileQuickQuestions = document.querySelectorAll('.mobile-quick-question');
+                
+                // Приветственное сообщение
+                setTimeout(() => {
+                    addMobileBotMessage("Здравствуйте! Я помощник компании 'TrueShine'. Выберите вопрос из списка или напишите свой!");
+                }, 500);
+                
+                // Функция добавления сообщения от бота (мобильная)
+                function addMobileBotMessage(text) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'mobile-message bot';
+                    messageDiv.innerHTML = `
+                        ${text}
+                        <div class="mobile-message-time">${getCurrentTime()}</div>
+                    `;
+                    mobileChatMessages.appendChild(messageDiv);
+                    mobileChatMessages.scrollTop = mobileChatMessages.scrollHeight;
                 }
-            });
-            
-            // Обработчики быстрых вопросов
-            quickQuestions.forEach(question => {
-                question.addEventListener('click', () => {
-                    processQuestion(question.getAttribute('data-question'));
+                
+                // Функция добавления сообщения от пользователя (мобильная)
+                function addMobileUserMessage(text) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'mobile-message user';
+                    messageDiv.innerHTML = `
+                        ${text}
+                        <div class="mobile-message-time">${getCurrentTime()}</div>
+                    `;
+                    mobileChatMessages.appendChild(messageDiv);
+                    mobileChatMessages.scrollTop = mobileChatMessages.scrollHeight;
+                }
+                
+                // Обработка вопроса (мобильная)
+                function processMobileQuestion(question) {
+                    if (!question.trim()) return;
+                    
+                    addMobileUserMessage(question);
+                    
+                    const answerData = findAnswer(question);
+                    
+                    setTimeout(() => {
+                        addMobileBotMessage(answerData.answer);
+                    }, 500);
+                    
+                    mobileChatInput.value = '';
+                }
+                
+                // Обработчики для мобильной версии
+                mobileChatSendBtn.addEventListener('click', () => {
+                    processMobileQuestion(mobileChatInput.value);
                 });
-            });
-            
-            // Обработчики предложенных вопросов
-            suggestedQuestions.forEach(question => {
-                question.addEventListener('click', () => {
-                    processQuestion(question.getAttribute('data-question'));
+                
+                mobileChatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        processMobileQuestion(mobileChatInput.value);
+                    }
                 });
-            });
+                
+                mobileQuickQuestions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        processMobileQuestion(question.getAttribute('data-question'));
+                    });
+                });
+                
+                // Анимации для мобильной версии
+                const animatedElements = document.querySelectorAll('.section-title, .service-item, .step, .benefit-card, .cta h2, .cta p, .cta-btn, .why-us-card, .subscription-card');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const index = Array.from(animatedElements).indexOf(entry.target);
+                            setTimeout(() => {
+                                entry.target.style.animation = `fadeInUp 1s ease forwards`;
+                            }, index * 200);
+                            
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                animatedElements.forEach(el => {
+                    observer.observe(el);
+                });
+                
+                // Аккордеон для услуг (мобильная)
+                const serviceHeaders = document.querySelectorAll('.service-header');
+                serviceHeaders.forEach(header => {
+                    header.addEventListener('click', () => {
+                        const serviceItem = header.parentElement;
+                        serviceItem.classList.toggle('active');
+                    });
+                });
+                
+                // Аккордеон для FAQ (мобильная)
+                const faqQuestions = document.querySelectorAll('.faq-question');
+                faqQuestions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        const faqItem = question.parentElement;
+                        faqItem.classList.toggle('active');
+                    });
+                });
+                
+                // Плавная прокрутка для навигации (мобильная)
+                const navLinks = document.querySelectorAll('nav a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href');
+                        const targetSection = document.querySelector(targetId);
+                        if (targetSection) {
+                            window.scrollTo({
+                                top: targetSection.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+            }
             
-            // Остальной JavaScript для анимаций и взаимодействий
-            const animatedElements = document.querySelectorAll('.section-title, .service-item, .step, .benefit-card, .cta h2, .cta p, .cta-btn, .why-us-card, .subscription-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const index = Array.from(animatedElements).indexOf(entry.target);
-                        setTimeout(() => {
-                            entry.target.style.animation = `fadeInUp 1s ease forwards`;
-                        }, index * 200);
+            // ========== ПК ВЕРСИЯ ==========
+            function initDesktopChat() {
+                const chatMessages = document.getElementById('chatMessages');
+                const chatInput = document.getElementById('chatInput');
+                const chatSendBtn = document.getElementById('chatSendBtn');
+                const quickQuestions = document.querySelectorAll('.quick-question');
+                const suggestedQuestions = document.querySelectorAll('.suggested-question');
+                
+                // Приветственное сообщение
+                setTimeout(() => {
+                    addBotMessage("Здравствуйте! Я помощник компании 'TrueShine'. Задайте мне любой вопрос об уборке, ценах, подписках или наших услугах!");
+                }, 1000);
+                
+                // Функция добавления сообщения от бота (ПК)
+                function addBotMessage(text) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'message bot';
+                    messageDiv.innerHTML = `
+                        ${text}
+                        <div class="message-time">${getCurrentTime()}</div>
+                    `;
+                    chatMessages.appendChild(messageDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    
+                    setTimeout(() => {
+                        messageDiv.style.animation = 'fadeIn 0.3s ease';
+                    }, 10);
+                }
+                
+                // Функция добавления сообщения от пользователя (ПК)
+                function addUserMessage(text) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'message user';
+                    messageDiv.innerHTML = `
+                        ${text}
+                        <div class="message-time">${getCurrentTime()}</div>
+                    `;
+                    chatMessages.appendChild(messageDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    
+                    setTimeout(() => {
+                        messageDiv.style.animation = 'fadeIn 0.3s ease';
+                    }, 10);
+                }
+                
+                // Обработка вопроса (ПК)
+                function processQuestion(question) {
+                    if (!question.trim()) return;
+                    
+                    addUserMessage(question);
+                    
+                    const answerData = findAnswer(question);
+                    
+                    setTimeout(() => {
+                        addBotMessage(answerData.answer);
                         
-                        observer.unobserve(entry.target);
+                        // Если есть предложения следующих вопросов, добавляем их
+                        if (answerData.suggestions && answerData.suggestions.length > 0) {
+                            setTimeout(() => {
+                                const suggestionsDiv = document.createElement('div');
+                                suggestionsDiv.className = 'suggested-questions';
+                                suggestionsDiv.style.marginTop = '10px';
+                                
+                                answerData.suggestions.forEach(suggestion => {
+                                    const suggestionBtn = document.createElement('div');
+                                    suggestionBtn.className = 'suggested-question';
+                                    suggestionBtn.textContent = suggestion;
+                                    suggestionBtn.style.margin = '5px';
+                                    suggestionBtn.onclick = () => {
+                                        processQuestion(suggestion);
+                                    };
+                                    suggestionsDiv.appendChild(suggestionBtn);
+                                });
+                                
+                                chatMessages.appendChild(suggestionsDiv);
+                                chatMessages.scrollTop = chatMessages.scrollHeight;
+                            }, 300);
+                        }
+                    }, 500);
+                    
+                    chatInput.value = '';
+                }
+                
+                // Обработчики для ПК версии
+                chatSendBtn.addEventListener('click', () => {
+                    processQuestion(chatInput.value);
+                });
+                
+                chatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        processQuestion(chatInput.value);
                     }
                 });
-            }, { threshold: 0.1 });
-            
-            animatedElements.forEach(el => {
-                observer.observe(el);
-            });
-            
-            // Аккордеон для услуг
-            const serviceHeaders = document.querySelectorAll('.service-header');
-            serviceHeaders.forEach(header => {
-                header.addEventListener('click', () => {
-                    const serviceItem = header.parentElement;
-                    serviceItem.classList.toggle('active');
+                
+                quickQuestions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        processQuestion(question.getAttribute('data-question'));
+                    });
                 });
-            });
-            
-            // Аккордеон для FAQ
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', () => {
-                    const faqItem = question.parentElement;
-                    faqItem.classList.toggle('active');
+                
+                suggestedQuestions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        processQuestion(question.getAttribute('data-question'));
+                    });
                 });
-            });
-            
-            // Плавная прокрутка для навигации
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        window.scrollTo({
-                            top: targetSection.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
+                
+                // Анимации для ПК версии
+                const animatedElements = document.querySelectorAll('.section-title, .service-item, .step, .benefit-card, .cta h2, .cta p, .cta-btn, .why-us-card, .subscription-card');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const index = Array.from(animatedElements).indexOf(entry.target);
+                            setTimeout(() => {
+                                entry.target.style.animation = `fadeInUp 1s ease forwards`;
+                            }, index * 200);
+                            
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                animatedElements.forEach(el => {
+                    observer.observe(el);
                 });
-            });
-            
-            // Кнопки подписок ведут в чат
-            const subscriptionButtons = document.querySelectorAll('.subscription-btn');
-            subscriptionButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const chatBotSection = document.querySelector('#chat-bot');
-                    if (chatBotSection) {
-                        window.scrollTo({
-                            top: chatBotSection.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        // Автоматически задаем вопрос о подписке
-                        setTimeout(() => {
-                            processQuestion("Расскажите о подписках");
-                        }, 1000);
-                    }
+                
+                // Аккордеон для услуг (ПК)
+                const serviceHeaders = document.querySelectorAll('.service-header');
+                serviceHeaders.forEach(header => {
+                    header.addEventListener('click', () => {
+                        const serviceItem = header.parentElement;
+                        serviceItem.classList.toggle('active');
+                    });
                 });
-            });
+                
+                // Аккордеон для FAQ (ПК)
+                const faqQuestions = document.querySelectorAll('.faq-question');
+                faqQuestions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        const faqItem = question.parentElement;
+                        faqItem.classList.toggle('active');
+                    });
+                });
+                
+                // Плавная прокрутка для навигации (ПК)
+                const navLinks = document.querySelectorAll('nav a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href');
+                        const targetSection = document.querySelector(targetId);
+                        if (targetSection) {
+                            window.scrollTo({
+                                top: targetSection.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+                
+                // Кнопки подписок ведут в чат (ПК)
+                const subscriptionButtons = document.querySelectorAll('.subscription-btn');
+                subscriptionButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const chatBotSection = document.querySelector('#chat-bot');
+                        if (chatBotSection) {
+                            window.scrollTo({
+                                top: chatBotSection.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                            // Автоматически задаем вопрос о подписке
+                            setTimeout(() => {
+                                processQuestion("Расскажите о подписках");
+                            }, 1000);
+                        }
+                    });
+                });
+            }
         });
     </script>
 </body>
